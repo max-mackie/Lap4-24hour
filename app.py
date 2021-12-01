@@ -29,7 +29,7 @@ def find_short(short):
 
 
 def isValid(id):
-    if len(id) != 7:
+    if len(id) != 6:
         return False
     else:
         return True
@@ -38,25 +38,23 @@ def isValid(id):
 def home():
     return render_template('home.html', title='home')
 
-@app.route('/prediction', methods=['GET', 'POST'])
-def predict():
+@app.route("/short", methods=['GET', 'POST'])
+def shorten():
+    form = UrlForm()
     if request.method == 'POST':
-        print(request.form)
-        piece_count = request.form['piece_count']
-        result = pricer.predict(piece_count)
-        return render_template('predict.html', default=piece_count, result=result)
+        if find_url(form.url.data):
+            found_url = find_url(form.url.data).url
+            found_short = find_url(form.url.data).url_short
+            return render_template('result.html', url=found_url, url_short=found_short)
+        else:
+            short = shortuuid.uuid()[:6]
+            url = UrlModel(url=form.url.data, url_short=short)
+            db.session.add(url)
+            db.session.commit()
+            return render_template('result.html', url=url.url, url_short=short)
     else:
-        return render_template('predict.html', default=0, result=0, title='Predict')
+        return render_template('shorten.html', form=form)
 
-@app.route('/reminder', methods=['GET', 'POST'])
-def reminder():
-    piece_count = request.form['piece_count']
-    result = request.form['result']
-    to_email = request.form['to_email']
-    msg = Message("Your LegOh! prediction is here!", sender="futureproof.testing@gmail.com", recipients=[to_email])
-    msg.html = render_template('mailers/your_result.html', piece_count=piece_count, result=result)
-    # mail.send(msg)
-    return render_template('thankyou.html')
 
 
 @app.errorhandler(exceptions.BadRequest)
