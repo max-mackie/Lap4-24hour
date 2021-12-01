@@ -55,7 +55,13 @@ def shorten():
     else:
         return render_template('shorten.html', form=form)
 
-
+@app.route("/<string:id>")
+def change(id):
+    if isValid(id):
+        url = find_short(id).url
+        return redirect(url)
+    else:
+        return render_template('404.html')
 
 @app.errorhandler(exceptions.BadRequest)
 def handle_405(err):
