@@ -41,7 +41,7 @@ def home():
     return render_template('home.html', title='home')
 
 @app.route("/short", methods=['GET', 'POST'])
-def shorten():
+def short():
     form = UrlForm()
     if request.method == 'POST':
         if find_url(form.url.data):
@@ -55,7 +55,7 @@ def shorten():
             db.session.commit()
             return render_template('result.html', url=url.url, url_short=short)
     else:
-        return render_template('shorten.html', form=form)
+        return render_template('short.html', form=form)
 
 @app.route("/<string:id>")
 def change(id):
