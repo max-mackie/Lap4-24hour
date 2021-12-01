@@ -1,0 +1,72 @@
+input {
+  outline: none;
+  border: none;
+}
+
+#submission,
+#mailer {
+  font-size: 1rem;
+  margin: 0 auto;
+  max-width: 350px;
+  display: grid;
+  grid-template-columns: repeat(4, 20%);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+#register {
+  grid-area: 1/1/1/5;
+}
+#result {
+  grid-area: 2/1/2/5;
+}
+#mailer {
+  padding-top: 1rem;
+}
+
+[name="piece_count"] {
+  text-align: right;
+  max-width: 50%;
+}
+
+[name="piece_count"],
+span {
+  background-color: black;
+  padding: 1rem;
+  color: greenyellow;
+  text-align: right;
+}
+
+[type="submit"],
+#mail-submit {
+  grid-area: 1/5/3/5;
+  max-width: 100px;
+}
+
+[type="submit"] {
+  background-color: var(--p-grey);
+}
+
+[type="image"] {
+  height: 50px;
+  margin-left: 25px;
+}
+
+[disabled] {
+  opacity: 0.5;
+}
+
+[name="to_email"] {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  grid-area: 1/1/2/5;
+  font-family: monospace;
+  border-bottom: 2px dashed grey;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: rgb(31, 16, 55);
+  font-family: "Indie Flower", cursive;
+}
+
+[name="to_email"]::placeholder {
+  font-family: monospace;
+}

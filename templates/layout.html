@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head%}{% endblock head%}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/favicon.ico') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/styles/index.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
+      rel="stylesheet"
+    />
+    <title>LegOh! | {% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/prediction">PREDICT!</a>
+    </nav>
+    <main>{% block content %}{% endblock content %}</main>
+    <footer>&copy; futureproof</footer>
+  </body>
+</html>
