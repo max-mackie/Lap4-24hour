@@ -5,13 +5,14 @@ verify_ssl = true
 
 [dev-packages]
 
-
 [packages]
 flask = "*"
 flask-cors = "*"
 flask-sqlalchemy = "*"
 flask-wtf = "*"
 shortuuid = "*"
+form = "*"
+werkzeug = "*"
 
 [requires]
 python_version = "3"
