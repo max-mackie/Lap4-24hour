@@ -6,16 +6,26 @@
 
 - Clone or download the repo.
 - Open terminal and navigate to folder.
+- pipenv shell
 - pipenv install
 
 ### Usage
 - Run pipenv shell
 - Run pipenv run dev to launch app on local host 5000.
-- Run pipenv run test to run the testing suite
 
 ## Changelog
+### app.py
+* Added db
+* Installed shortuuid for generating short urls by using a pattern of url-safe characters
+* Generated a secret key using python -c "import os; print(os.urandom(24).hex())" in order to save a session.
+* Added url model
+* Add parameters for finding the url and shortening it
+* Add error handling
 
-### commit history
+### form.py
+* Add form details with validators
+
+======
 
 ## Bugs
 
@@ -25,4 +35,5 @@
 
 
 ### Challenges
+
 
