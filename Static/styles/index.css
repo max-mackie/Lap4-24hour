@@ -55,12 +55,6 @@ nav a {
 nav a:hover {
   color: var(--a-red);
 }
-nav a:nth-child(odd) {
-  background-color: var(--p-green);
-}
-nav a:nth-child(even) {
-  background-color: var(--p-yellow);
-}
 
 main {
   display: block;
