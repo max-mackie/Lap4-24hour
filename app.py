@@ -8,6 +8,13 @@ app.config['SECRET_KEY'] = '5204956a60384b5685e8ce01e34235517b576fc6a461ff13'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
+class UrlModel(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(250), unique=True, nullable=False)
+    url_short = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+        return f"UrlModel('{self.url}', '{self.url_short}')"
 
 @app.route('/')
 def home():
