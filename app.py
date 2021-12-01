@@ -1,14 +1,38 @@
-from flask import Flask, jsonify, redirect, render_template, request
-from flask_cors import CORS
-from lego_prediction import pricer
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
+from form import UrlForm
+import shortuuid
 from werkzeug import exceptions
 
 app = Flask(__name__)
-CORS(app)
+app.config['SECRET_KEY'] = '5204956a60384b5685e8ce01e34235517b576fc6a461ff13'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
 
-from flask_mail import Mail
-from flask_mail import Message
-mail = Mail(app)
+class UrlModel(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(200), unique=True, nullable=False)
+    url_short = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+        return f"UrlModel('{self.url}', '{self.url_short}')"
+
+def find_url(url):
+    found = UrlModel.query.filter_by(url=url).first()
+    print(found)
+    return found
+
+def find_short(short):
+    found = UrlModel.query.filter_by(url_short=short).first()
+    print(found)
+    return found
+
+
+def isValid(id):
+    if len(id) != 7:
+        return False
+    else:
+        return True
 
 @app.route('/')
 def home():
