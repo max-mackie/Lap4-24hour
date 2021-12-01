@@ -1,6 +1,6 @@
 @font-face {
   font-family: legoh;
-  src: url("../fonts/Legothick.ttf");
+  src: url("../fonts/VT323-Regular.ttf");
   font-weight: bold;
 }
 
@@ -87,11 +87,11 @@ main::after {
 
 footer {
   position: fixed;
-  color: var(--p-red);
+  color: white;
   bottom: 0;
   width: 100%;
   padding: 10px;
-  background-color: var(--p-blue);
+  background-color: black;
 }
 
 #about a {
