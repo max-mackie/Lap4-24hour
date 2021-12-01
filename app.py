@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-
+from form import UrlForm
+import shortuuid
 from werkzeug import exceptions
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5204956a60384b5685e8ce01e34235517b576fc6a461ff13'
