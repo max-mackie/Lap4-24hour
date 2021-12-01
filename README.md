@@ -10,7 +10,6 @@
 - pipenv install
 
 ### Usage
-- Run pipenv shell
 - Run pipenv run dev to launch app on local host 5000.
 
 ## Changelog
