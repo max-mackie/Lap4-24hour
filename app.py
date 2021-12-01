@@ -8,6 +8,7 @@ from werkzeug import exceptions
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5204956a60384b5685e8ce01e34235517b576fc6a461ff13'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class UrlModel(db.Model):
