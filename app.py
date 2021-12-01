@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from form import UrlForm
 import shortuuid
 from werkzeug import exceptions
+import os 
 
 
 app = Flask(__name__)
@@ -11,6 +12,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
 class UrlModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(250), unique=True, nullable=False)
@@ -32,10 +36,13 @@ def find_short(short):
 
 
 def isValid(id):
-    if len(id) != 6:
+    if len(id) != 7:
         return False
     else:
         return True
+
+def init_db():
+    db.create_all()
 
 @app.route('/')
 def home():
@@ -50,7 +57,7 @@ def short():
             found_short = find_url(form.url.data).url_short
             return render_template('result.html', url=found_url, url_short=found_short)
         else:
-            short = shortuuid.uuid()[:6]
+            short = shortuuid.uuid()[:7]
             url = UrlModel(url=form.url.data, url_short=short)
             db.session.add(url)
             db.session.commit()
@@ -81,3 +88,4 @@ def handle_500(err):
 
 if __name__ == '__main__':
     app.run(debug=True)
+ 
