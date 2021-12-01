@@ -4,6 +4,9 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug import exceptions
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = '5204956a60384b5685e8ce01e34235517b576fc6a461ff13'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
 
 
 @app.route('/')
@@ -42,3 +45,7 @@ def handle_400(err):
 @app.errorhandler(exceptions.InternalServerError)
 def handle_500(err):
     return render_template('errors/500.html')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
