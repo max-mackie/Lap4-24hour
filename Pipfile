@@ -12,6 +12,8 @@ flask-sqlalchemy = "*"
 flask-wtf = "*"
 shortuuid = "*"
 form = "*"
+werkzeug = "*"
+
 
 [requires]
 python_version = "3"

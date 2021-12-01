@@ -10,11 +10,10 @@
 - pipenv install
 
 ### Usage
-
+- Run pipenv shell
 - Run pipenv run dev to launch app on local host 5000.
 
 ## Changelog
-
 ### app.py
 * Added db
 * Installed shortuuid for generating short urls by using a pattern of url-safe characters
@@ -26,4 +25,15 @@
 ### form.py
 * Add form details with validators
 
+======
+
 ## Bugs
+
+## Wins & Challenges
+
+### Wins
+
+
+### Challenges
+
+
