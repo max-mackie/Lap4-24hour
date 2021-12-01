@@ -16,6 +16,24 @@ class UrlModel(db.Model):
     def __repr__(self):
         return f"UrlModel('{self.url}', '{self.url_short}')"
 
+def find_url(url):
+    found = UrlModel.query.filter_by(url=url).first()
+    print(found)
+    return found
+
+
+def find_short(short):
+    found = UrlModel.query.filter_by(url_short=short).first()
+    print(found)
+    return found
+
+
+def isValid(id):
+    if len(id) != 7:
+        return False
+    else:
+        return True
+
 @app.route('/')
 def home():
     return render_template('home.html', title='home')
