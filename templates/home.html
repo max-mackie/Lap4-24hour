@@ -1,9 +1,21 @@
 {% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block
 content %}
-<h1>LegOh!</h1>
-<p id="about">
-  Getting a craving for a new set of colourful bricks? Give yourself a heads up
-  on the amount you might be spending... Tell us the number of pieces you want
-  and we'll let you know how much to save up!
-</p>
+  <h1>{% block title %} Welcome to FlaskShortener {% endblock %}</h1>
+  <form method="post">
+  <div class="form-group">
+      <label for="url">URL</label>
+      <input type="text" name="url"
+              placeholder="URL to shorten" class="form-control"
+              value="{{ request.form['url'] }}" autofocus></input>
+  </div>
+
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </form>
+
+  {% if short_url %}
+  <hr>
+  <span>{{ short_url }}</span>
+  {% endif %}
 {% endblock %}
