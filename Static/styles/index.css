@@ -64,6 +64,8 @@ main {
   padding-top: 10vh;
 }
 
+
+
 main::after {
   content: "";
   background-image: url("../img/lego-banner.webp");
