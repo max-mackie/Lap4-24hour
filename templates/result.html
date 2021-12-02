@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}{% block content%}
+<div class="row">
+  <div class="col-lg-4 mx-auto">
+    <h2 class="mt-4 mx-auto">Thanks!</h2>
+    <p>
+      {{url}} can be found at
+      <a href="http://localhost:5000/{{url_short}}"
+        >http://localhost:5000/{{url_short}}</a
+      >
+    </p>
+  </div>
+</div>
+
+{% endblock %}
